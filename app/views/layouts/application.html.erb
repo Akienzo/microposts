@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Microposts</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Microposts</title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>      <!--app/views/layouts/_header.html.erb 読み込むパーシャルを以下のような内容で作成します-->
+    <div class="container">
+      <%= yield %>             <!--yieldの部分に各ページの部分テンプレート（erbファイル）が読み込まれます。-->
+    </div>
+  </body>
 </html>
