@@ -1,0 +1,13 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(object.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>    <!--#objectには、@userが入ります。ここでは、送信されたデータにエラーがある場合-->
+                                                            <!--#、@user.errorsにエラー内容が入っているのでそれらを取り出してメッセージとして表示している-->
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
