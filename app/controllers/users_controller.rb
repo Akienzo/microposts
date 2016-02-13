@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  # before_action :collect_user, only: [:edit, :update]  
   def show
     @user = User.find(params[:id])
   end
@@ -18,11 +18,31 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def edit
+    @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_path 
+    end 
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Edit to the Sample App!"
+      redirect_to @user　
+    else
+      render 'edit'
+    end
+  end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+    params.require(:user).permit(:name, :email, :area, :password,:password_confirmation)
   end
+  
+  # def collect_user
+  # user = User.find(params[:id]) redirect_to(root_url) if user != current_user
+  # end
 end
