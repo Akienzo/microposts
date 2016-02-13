@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
     has_secure_password     #データベースに安全にハッシュ化（暗号化）されたpassword_digestを保存する。
                             #passwordとpassword_confirmationをモデルに追加して、パスワードの確認が一致するか検証する。
                             #パスワードが正しいときに、ユーザーを返すauthenticateメソッドを提供する。
+    has_many :microposts    #それぞれのユーザーは複数の投稿を持つことができる。
   
 end

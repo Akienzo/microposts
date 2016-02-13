@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   # before_action :collect_user, only: [:edit, :update]  
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)  #ユーザーに紐付いたマイクロポストを作成日時が新しいものから取得し、@micropostsに代入しています。
   end
   
   def new
