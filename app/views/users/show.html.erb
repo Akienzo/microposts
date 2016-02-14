@@ -1,5 +1,21 @@
-<h1>
-  <%= gravatar_for @user %>   <!--#メソッドは、Gravatarというサービスに登録された画像から引っ張ってきて、HTMLタグを出力します-->
-  名前：<%= @user.name %><br>
-  地域：<%= @user.area %>     
-</h1>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>     <!--#メソッドは、Gravatarというサービスに登録された画像から引っ張ってきて、HTMLタグを出力します-->
+        名前：<%= @user.name %><br>
+        地域：<%= @user.area %>     
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <!--#下記のコマンドは@micropostsからデータを一つ一つ取り出して、micropostというローカル変数として、パーシャルapp/views/microposts/_micropost.html.erbに渡している-->
+        <%= render @microposts %>
+      </ol>
+    <% end %>
+  </div>
+</div>

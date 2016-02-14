@@ -1,0 +1,7 @@
+<%= form_for(current_user.following_relationships.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+
+<!--form_forのオプションとしてremote: trueを指定しています。この場合はAjaxでリクエストが行われ、通常とは異なりJavaScriptでページの一部（今回はフォローボタン）が書き換わります。-->
+<!--また、hidden_field_tagを指定することで、フォローするユーザーの値をIDとして持つ、入力欄としては表示されないtype="hidden"の<input>タグが作成されます。-->
