@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # before_action :collect_user, only: [:edit, :update]  
   before_action :set_user,
                 only: [:show, :edit, :update, :followings, :followers]
-  before_action :logged_in_user, only: [:show, :edit, :update]
+  # before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :authenticate!, only: [:edit, :update]
   
   def show
@@ -48,11 +48,6 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :area, :password,:password_confirmation)
   end
   
-    # get parameters for sinup
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
   # get parameters for profile editing
   def user_profile
     params.require(:user).permit(:name, :email, :profile, :area, :password, :password_confirmation)
