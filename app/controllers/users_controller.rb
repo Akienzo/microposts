@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   # check current_user is editing self ?
   def authenticate!
     if @user != current_user
-      redirect_to root_url, flash: { alert: "不正なアクセス" }
+      redirect_to root_url, flash: { danger: "不正なアクセス" }
     end
   end
   # def collect_user
