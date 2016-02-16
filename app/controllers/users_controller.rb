@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :collect_user, only: [:edit, :update]  
+  #before_action :collect_user, only: [:edit, :update]  
   before_action :set_user,
                 only: [:show, :edit, :update, :followings, :followers]
   # before_action :logged_in_user, only: [:show, :edit, :update]
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   # check current_user is editing self ?
   def authenticate!
     if @user != current_user
-      redirect_to root_url, flash: { alert: "不正なアクセス" }
+      redirect_to root_url, flash: { danger: "不正なアクセス" }
     end
   end
   # def collect_user
