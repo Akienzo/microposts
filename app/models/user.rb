@@ -14,7 +14,24 @@ class User < ActiveRecord::Base
     has_many :following_relationships, class_name:  "Relationship",
                                      foreign_key: "follower_id",
                                      dependent:   :destroy
+    #f
+    # has_many :passive_relationships, class_name:  "Relationship",
+    #                               foreign_key: "followed_id",
+    #                               dependent:   :destroy
     has_many :following_users, through: :following_relationships, source: :followed
+    
+    has_many :follower_relationships, class_name:  "Relationship",
+                                     foreign_key: "followed_id",
+                                     dependent:   :destroy
+    #f
+    # has_many :passive_relationships, class_name:  "Relationship",
+    #                               foreign_key: "followed_id",
+    #                               dependent:   :destroy
+    has_many :follower_users, through: :follower_relationships, source: :follower
+    #f
+    #has_many :followers, through: :passive_relationships, source: :follower
+    #f
+    # has_many :following, through: :active_relationships, source: :followed
     
       # 他のユーザーをフォローする 現在のユーザーのfollowing_relationshipsの中からフォローするユーザーのuser_idを含むものを探し、存在しない場合は、新しく作成します。
     def follow(other_user)
