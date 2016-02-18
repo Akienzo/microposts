@@ -7,6 +7,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"        #パラメータを受け取って現在のユーザーに紐付いたMicropostのインスタンスを作成して@micropost変数に入れ、@micropost.saveで保存が成功した場合は、root_urlである/にリダイレクトを行い
       redirect_to root_url
     else
+      @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc) #MicropostsControllerのcreateメソッドでもエラーが発生した場合はstatic_pages/homeテンプレートを使用
       render 'static_pages/home'
     end
   end
