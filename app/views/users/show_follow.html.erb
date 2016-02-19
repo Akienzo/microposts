@@ -22,8 +22,11 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <% @users.each do |u| %>
-        <%= render partial: 'user', locals: { user: u } %>
+        <% @users.each do |user| %>
+          <li>
+            <%= gravatar_for user, size: 50 %>
+            <%= link_to user.name, user %>
+          </li>
         <% end %>
       </ul>
     <% end %>

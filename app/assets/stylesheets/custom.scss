@@ -179,6 +179,20 @@ aside {
 
 .users.follow {
   padding: 0;
+  //add20160219
+  list-style: none;
+  li {
+    padding: 10px 10px;
+    border-top: 1px solid #e8e8e8;
+    display: inline-block;
+    width:300px;
+  }
+  // .gravatar {
+  //   float: left;
+  //   margin-right: 10px;
+  //   margin-top: 5px;
+  // }//
+  
 }
 
 /* microposts */
@@ -225,5 +239,36 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+.showfollow {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
   }
 }
