@@ -16,10 +16,12 @@
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <%= page_entries_info @microposts %>
       <ol class="microposts">
         <!--#下記のコマンドは@micropostsからデータを一つ一つ取り出して、micropostというローカル変数として、パーシャルapp/views/microposts/_micropost.html.erbに渡している-->
         <%= render @microposts %>
       </ol>
+      <%= paginate @microposts %>
     <% end %>
   </div>
 </div>

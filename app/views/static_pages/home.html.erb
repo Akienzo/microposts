@@ -15,7 +15,9 @@
     <!--ホーム画面にタイムライン表示を追加します。-->
     <div class="col-md-8">
       <h3>Micropost Feed</h3>
+      <%= page_entries_info @feed_items %>
       <%= render 'shared/feed' %>
+      <%= paginate @feed_items %>
     </div>
   </div>
 <% else %>
